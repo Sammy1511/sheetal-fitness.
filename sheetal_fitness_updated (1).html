@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sheetal Fitness — train stronger, move better, become your best." />
+  <title>Sheetal Fitness | Built by Discipline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b0d0d;--panel:#141717;--muted:#a2aaa6;--text:#f4f6f2;--lime:#d5ff3f;--line:rgba(255,255,255,.12)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:82px}
+    body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    button,input,select{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin:auto}
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;background:rgba(11,13,13,.92);backdrop-filter:blur(14px)}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:1.5px;font-size:19px}
+    .brand-mark{display:grid;place-items:center;width:34px;height:34px;background:var(--lime);color:#111;border-radius:9px;font-weight:900;font-family:"Barlow Condensed",sans-serif;font-size:23px}
+    .brand span:last-child{color:var(--lime)}
+    .nav-links{display:flex;gap:30px;align-items:center;color:#c4cbc6;font-size:13px}
+    .nav-links a:hover{color:var(--lime)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:4px;padding:13px 20px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--lime);color:#111}
+    .btn-primary:hover{background:#e2ff77;transform:translateY(-2px)}
+    .btn-outline{border:1px solid rgba(255,255,255,.35);background:transparent;color:white}
+    .btn-outline:hover{border-color:var(--lime);color:var(--lime)}
+    .menu-toggle{display:none;background:none;color:white;border:0;font-size:25px;cursor:pointer}
+    .hero{min-height:660px;display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:42px;padding:70px 0 82px;position:relative}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--lime);font-size:11px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase}
+    .eyebrow:before{content:"";width:26px;height:2px;background:var(--lime)}
+    h1,h2,h3,.display{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;line-height:.94}
+    h1{font-size:clamp(64px,8.5vw,112px);font-weight:900;letter-spacing:-1.5px;margin:22px 0}
+    h1 em{font-style:normal;color:var(--lime)}
+    .hero-copy{color:#b2bbb5;max-width:470px;font-size:15px;line-height:1.9}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 36px}
+    .stats{display:flex;gap:28px;padding-top:23px;border-top:1px solid var(--line);max-width:455px}
+    .stat strong{display:block;font-family:"Barlow Condensed",sans-serif;font-size:29px;line-height:1.1}
+    .stat small{color:var(--muted);font-size:10px;letter-spacing:1px;text-transform:uppercase}
+    .hero-visual{height:510px;position:relative;isolation:isolate}
+    .hero-photo{position:absolute;inset:0 0 0 24px;overflow:hidden;border-radius:3px;background:#242827}
+    .hero-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);opacity:.86}
+    .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,9,8,.65),transparent 65%),linear-gradient(90deg,rgba(7,9,8,.12),transparent)}
+    .vertical-label{position:absolute;left:0;top:34px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;letter-spacing:3px;color:#c5ccc6}
+    .image-tag{position:absolute;z-index:2;right:-12px;bottom:28px;background:var(--lime);color:#10120e;padding:17px 20px;min-width:190px}
+    .image-tag b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:27px;line-height:1}
+    .image-tag span{font-size:9px;font-weight:800;letter-spacing:1.5px}
+    .floating-number{position:absolute;z-index:2;top:20px;left:8px;font-family:"Barlow Condensed",sans-serif;font-size:62px;font-weight:900;color:var(--lime);text-shadow:0 3px 20px #000}
+    .ticker{background:var(--lime);color:#10120e;overflow:hidden;white-space:nowrap;padding:15px 0;font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:800;letter-spacing:2px}
+    .ticker-track{display:flex;justify-content:space-around;gap:30px}
+    .ticker span{display:inline-flex;align-items:center;gap:30px}
+    .ticker span:after{content:"✳";font-size:18px}
+    section{padding:92px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:35px}
+    .section-head h2{font-size:clamp(42px,5vw,64px);margin-top:15px}
+    .section-head p{max-width:390px;color:var(--muted);font-size:13px}
+    .programs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .program-card{background:var(--panel);border:1px solid var(--line);min-height:320px;padding:27px;position:relative;overflow:hidden;transition:.25s}
+    .program-card:hover{border-color:var(--lime);transform:translateY(-5px)}
+    .program-num{font-family:"Barlow Condensed",sans-serif;color:var(--lime);font-size:18px}
+    .program-icon{font-size:27px;margin:25px 0 18px}
+    .program-card h3{font-size:31px;margin-bottom:12px}
+    .program-card p{color:var(--muted);font-size:13px;max-width:280px}
+    .card-link{position:absolute;bottom:25px;left:27px;color:var(--lime);font-size:11px;font-weight:800;letter-spacing:1.2px}
+    .card-link span{font-size:18px;margin-left:8px}
+    .about{background:#121515}
+    .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+    .about-image{height:490px;position:relative}
+    .about-image img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);opacity:.9}
+    .about-image:after{content:"";position:absolute;inset:0;border:1px solid rgba(213,255,63,.45);transform:translate(13px,13px);pointer-events:none}
+    .about-content h2{font-size:clamp(45px,5.5vw,70px);margin:17px 0 22px}
+    .about-content>p{color:var(--muted);font-size:14px;max-width:510px}
+    .check-list{list-style:none;margin:28px 0 32px;display:grid;gap:13px}
+    .check-list li{display:flex;gap:12px;align-items:center;font-size:13px}
+    .check{color:var(--lime);font-weight:900}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .plan{border:1px solid var(--line);background:var(--panel);padding:28px;position:relative}
+    .plan.featured{border-color:var(--lime);background:#171c12}
+    .popular{position:absolute;top:0;right:0;background:var(--lime);color:#111;font-size:9px;letter-spacing:1.2px;font-weight:900;padding:8px 12px}
+    .plan h3{font-size:30px;margin-bottom:10px}
+    .plan .desc{font-size:12px;color:var(--muted);min-height:38px}
+    .price{font-family:"Barlow Condensed",sans-serif;font-size:50px;font-weight:800;margin:20px 0 2px}
+    .price small{font:500 12px "DM Sans",sans-serif;color:var(--muted)}
+    .plan hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+    .plan ul{list-style:none;display:grid;gap:12px;margin-bottom:25px;color:#d0d5d1;font-size:12px}
+    .plan li:before{content:"✓";color:var(--lime);margin-right:10px}
+    .plan .btn{width:100%}
+    .schedule-wrap{overflow-x:auto;border:1px solid var(--line)}
+    table{border-collapse:collapse;width:100%;min-width:640px;text-align:left}
+    th,td{padding:17px 20px;border-bottom:1px solid var(--line);font-size:12px}
+    th{background:#171a19;color:var(--lime);font-size:10px;letter-spacing:1.4px;text-transform:uppercase}
+    td{color:#d1d6d2}
+    td:first-child{font-weight:700;color:white}
+    tr:last-child td{border-bottom:0}
+    .tag{display:inline-block;background:#252a24;color:var(--lime);padding:5px 9px;font-size:10px}
+    .cta{padding:0 0 92px}
+    .cta-box{background:var(--lime);color:#10120e;padding:55px 60px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .cta-box h2{font-size:clamp(40px,5vw,64px);max-width:610px}
+    .cta-box p{font-size:13px;margin-top:14px;max-width:490px}
+    .cta-box .btn{background:#10120e;color:white;white-space:nowrap}
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:11px}
+    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+    .socials{display:flex;gap:18px}
+    .socials a:hover{color:var(--lime)}
+    .modal-backdrop{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal-backdrop.open{display:flex}
+    .modal{width:min(480px,100%);background:#141817;border:1px solid var(--line);padding:30px;position:relative}
+    .modal h2{font-size:39px;margin-bottom:8px}
+    .modal p{color:var(--muted);font-size:12px;margin-bottom:22px}
+    .modal-close{position:absolute;right:18px;top:14px;background:none;border:0;color:white;font-size:25px;cursor:pointer}
+    .field{display:grid;gap:7px;margin-bottom:14px}
+    .field label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#c4cbc6}
+    .field input,.field select{width:100%;padding:12px;background:#0b0d0d;color:white;border:1px solid var(--line);border-radius:3px;outline:none}
+    .field input:focus,.field select:focus{border-color:var(--lime)}
+    .modal .btn{width:100%;margin-top:8px}
+    .form-message{display:none;color:var(--lime);font-size:12px;margin-top:14px}
+    @media(max-width:800px){
+      .nav-links{display:none;position:absolute;top:77px;left:0;right:0;background:#101313;padding:22px;flex-direction:column;gap:20px;border-bottom:1px solid var(--line)}
+      .nav-links.show{display:flex}.menu-toggle{display:block}.nav-join{display:none}
+      .hero{grid-template-columns:1fr;padding-top:55px;gap:38px}.hero-visual{height:430px}.hero-photo{left:16px}
+      .programs,.plans{grid-template-columns:1fr}.program-card{min-height:280px}
+      .about-grid{grid-template-columns:1fr;gap:45px}.about-image{height:360px;margin-right:12px}
+      .section-head{align-items:start;flex-direction:column}.cta-box{padding:35px 27px;align-items:flex-start;flex-direction:column}
+      .stats{gap:20px}.stat strong{font-size:25px}
+    }
+    @media(max-width:440px){.container{width:calc(100% - 28px)}h1{font-size:64px}.hero-visual{height:350px}.image-tag{right:-4px}.stats{gap:14px}.stat small{font-size:8px}section{padding:68px 0}.ticker-track{justify-content:flex-start}.cta{padding-bottom:68px}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%">
+      <a class="brand" href="#home" aria-label="Sheetal Fitness home"><span class="brand-mark">F</span><span>SHEETAL<span>FITNESS</span></span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#programs">Programs</a><a href="#about">Our gym</a><a href="#plans">Membership</a><a href="#schedule">Schedule</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:14px"><button class="btn btn-primary nav-join" data-open-modal>Join the gym ↗</button><button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Your work. Your strength.</div>
+        <h1>BUILT BY<br><em>DISCIPLINE.</em></h1>
+        <p class="hero-copy">A stronger you doesn't happen by accident. Train with purpose, find your people, and build habits that last — one session at a time.</p>
+        <div class="hero-actions"><button class="btn btn-primary" data-open-modal>Start your journey ↗</button><a class="btn btn-outline" href="#programs">Explore programs</a></div>
+        <div class="stats">
+          <div class="stat"><strong>1,200+</strong><small>Members strong</small></div>
+          <div class="stat"><strong>25+</strong><small>Expert coaches</small></div>
+          <div class="stat"><strong>40+</strong><small>Weekly classes</small></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="vertical-label">NO SHORTCUTS. JUST WORK.</div>
+        <div class="floating-number">01</div>
+        <div class="hero-photo"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85" alt="Modern gym with strength training equipment"></div>
+        <div class="image-tag"><b>SHOW UP.</b><span>THE REST FOLLOWS.</span></div>
+      </div>
+    </section>
+
+    <div class="ticker"><div class="ticker-track"><span>TRAIN WITH PURPOSE</span><span>GET STRONGER EVERY DAY</span><span>NO SHORTCUTS</span><span>TRAIN WITH PURPOSE</span></div></div>
+
+    <section class="container" id="programs">
+      <div class="section-head"><div><div class="eyebrow">Find your focus</div><h2>TRAIN YOUR WAY.</h2></div><p>Whether you're starting fresh or chasing a new personal best, there's a place for you here.</p></div>
+      <div class="programs">
+        <article class="program-card"><div class="program-num">01 / STRENGTH</div><div class="program-icon">↗</div><h3>Strength &amp; Conditioning</h3><p>Build practical strength with structured sessions, expert coaching, and progress you can measure.</p><a class="card-link" href="#plans">EXPLORE PROGRAM <span>↗</span></a></article>
+        <article class="program-card"><div class="program-num">02 / PERFORMANCE</div><div class="program-icon">◉</div><h3>Functional Training</h3><p>Move with confidence. Improve balance, mobility, and total-body performance in every session.</p><a class="card-link" href="#plans">EXPLORE PROGRAM <span>↗</span></a></article>
+        <article class="program-card"><div class="program-num">03 / COMMUNITY</div><div class="program-icon">✳</div><h3>Group Classes</h3><p>Good energy, great coaching, and a crew that keeps you motivated when the work gets tough.</p><a class="card-link" href="#schedule">VIEW SCHEDULE <span>↗</span></a></article>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-image"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1000&q=85" alt="Athlete training in a gym"></div>
+        <div class="about-content"><div class="eyebrow">Meet your trainer</div><h2>SHEETAL MA’AM <span style="color:var(--lime)">· COACH</span><br>YOUR GOALS.</h2><p>Train with Sheetal Ma’am in a supportive space built around consistency, confidence, and progress. Choose the membership that suits your goals and enjoy facilities designed to keep you moving.</p>
+          <ul class="check-list"><li><span class="check">✓</span> Coaches who know your name and your goals</li><li><span class="check">✓</span> Modern equipment and dedicated training zones</li><li><span class="check">✓</span> Flexible plans for your schedule and lifestyle</li><li><span class="check">✓</span> A community that celebrates progress, not perfection</li></ul>
+          <a href="#plans" class="btn btn-primary">Find your membership ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" id="plans">
+      <div class="section-head"><div><div class="eyebrow">Simple membership</div><h2>INVEST IN YOU.</h2></div><p>Choose a plan that fits your routine. No pressure, just a clear path to getting started.</p></div>
+      <div class="plans">
+        <article class="plan"><h3>Basic Plan</h3><p class="desc">A simple start for your fitness routine.</p><div class="price">₹800<small> / 1 month</small></div><hr><ul><li>Floor exercises</li><li>Yoga</li></ul><button class="btn btn-outline" data-plan="Basic Plan" data-open-modal>Choose Basic</button></article>
+        <article class="plan"><h3>Standard Plan</h3><p class="desc">Variety and energy for your workouts.</p><div class="price">₹2,500<small> / 3 months</small></div><hr><ul><li>Zumba</li><li>Cardio</li><li>Aerobics</li><li>CrossFit</li></ul><button class="btn btn-outline" data-plan="Standard Plan" data-open-modal>Choose Standard</button></article>
+        <article class="plan featured"><div class="popular">POPULAR CHOICE</div><h3>Pro Plan</h3><p class="desc">Training variety with trainer support.</p><div class="price">₹4,100<small> / 6 months</small></div><hr><ul><li>Zumba</li><li>Cardio</li><li>Trainer support</li></ul><button class="btn btn-primary" data-plan="Pro Plan" data-open-modal>Choose Pro</button></article>
+        <article class="plan"><h3>Elite Plan</h3><p class="desc">All facilities with personal guidance.</p><div class="price">₹12,000<small> / 12 months</small></div><hr><ul><li>All facilities</li><li>Personal trainer</li></ul><button class="btn btn-outline" data-plan="Elite Plan" data-open-modal>Choose Elite</button></article>
+        <article class="plan"><h3>Couple Plan</h3><p class="desc">Train together and stay consistent.</p><div class="price">₹4,500<small> / 3 months</small></div><hr><ul><li>Membership for 2 members</li><li>All facilities</li></ul><button class="btn btn-outline" data-plan="Couple Plan" data-open-modal>Choose Couple</button></article>
+      </div>
+      <p style="color:var(--muted);font-size:10px;margin-top:15px">*Membership details supplied for Sheetal Fitness. Please confirm the exact facility list before publishing.</p>
+    </section>
+
+    <section id="schedule" style="background:#121515">
+      <div class="container">
+        <div class="section-head"><div><div class="eyebrow">Plan your week</div><h2>ON THE FLOOR.</h2></div><p>Find your rhythm with sessions designed to fit into your day.</p></div>
+        <div class="schedule-wrap"><table><thead><tr><th>Class</th><th>Monday</th><th>Wednesday</th><th>Friday</th><th>Coach</th></tr></thead><tbody>
+          <tr><td>Strength Basics</td><td>7:00 AM</td><td>7:00 AM</td><td>7:00 AM</td><td><span class="tag">Sheetal</span></td></tr>
+          <tr><td>Functional Fit</td><td>6:00 PM</td><td>6:00 PM</td><td>6:00 PM</td><td><span class="tag">Sheetal</span></td></tr>
+          <tr><td>Mobility &amp; Core</td><td>7:00 PM</td><td>—</td><td>7:00 PM</td><td><span class="tag">Sheetal</span></td></tr>
+          <tr><td>Weekend Power</td><td>—</td><td>—</td><td>—</td><td><span class="tag">Saturday · 9 AM</span></td></tr>
+        </tbody></table></div>
+        <p style="color:var(--muted);font-size:10px;margin-top:13px">Demo timetable — confirm actual class times with your gym before publishing.</p>
+      </div>
+    </section>
+
+    <section class="container cta">
+      <div class="cta-box"><div><h2>READY TO GET<br>AFTER IT?</h2><p>Your first step is simple. Contact Sheetal ma’am to find the right plan and start your fitness journey.</p><p style="margin-top:12px"><strong>Call:</strong> <a href="tel:8849251995">8849251995</a> &nbsp; <strong>Gym inbox:</strong> <a href="mailto:sheetalfitness@gmail.com">sheetalfitness@gmail.com</a></p></div><button class="btn" data-open-modal>Book a free visit ↗</button></div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><a class="brand" href="#home"><span class="brand-mark">F</span><span>SHEETAL<span>FITNESS</span></span></a><span>© <span id="year"></span> Sheetal Fitness. Built on consistency.</span><div class="socials"><a href="tel:8849251995">8849251995</a><a href="mailto:sheetalfitness@gmail.com">sheetalfitness@gmail.com</a></div></div></footer>
+
+  <div class="modal-backdrop" id="joinModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="eyebrow">Start here</div><h2 id="modalTitle">LET'S GET MOVING.</h2><p>Leave your details and Sheetal Ma’am can help you find the right plan. You can also call 8849251995 or email sheetalfitness@gmail.com.</p>
+      <form id="joinForm">
+        <div class="field"><label for="name">Your name</label><input id="name" name="name" required placeholder="e.g. Alex Patel"></div>
+        <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label for="plan">Interested in</label><select id="plan" name="plan"><option>Free gym visit</option><option>Basic Plan</option><option>Standard Plan</option><option selected>Pro Plan</option><option>Elite Plan</option><option>Couple Plan</option></select></div>
+        <button class="btn btn-primary" type="submit">Send enquiry ↗</button>
+        <div class="form-message" id="formMessage" role="status">Thanks! This demo form works locally, but it isn't connected to a gym inbox yet.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('joinModal');
+    const planSelect = document.getElementById('plan');
+    const formMessage = document.getElementById('formMessage');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.querySelectorAll('[data-open-modal]').forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.dataset.plan) planSelect.value = button.dataset.plan;
+        formMessage.style.display = 'none';
+        modal.classList.add('open');
+        document.getElementById('name').focus();
+      });
+    });
+    function closeModal(){ modal.classList.remove('open'); }
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if(event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if(event.key === 'Escape') closeModal(); });
+
+    document.getElementById('joinForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const formData = new FormData(event.currentTarget);
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const plan = String(formData.get('plan') || 'Free gym visit').trim();
+      const subject = encodeURIComponent('Sheetal Fitness enquiry — ' + plan);
+      const body = encodeURIComponent(
+        'Hello Sheetal Ma’am,\n\nI would like to enquire about Sheetal Fitness.\n' +
+        'Name: ' + name + '\nEmail: ' + email + '\nInterested in: ' + plan + '\n\nPlease contact me with more details.'
+      );
+      formMessage.textContent = 'Opening your email app to send this enquiry to sheetalfitness@gmail.com. If it does not open, email sheetalfitness@gmail.com directly.';
+      formMessage.style.display = 'block';
+      window.location.href = 'mailto:sheetalfitness@gmail.com?subject=' + subject + '&body=' + body;
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('show');
+      menuToggle.textContent = isOpen ? '×' : '☰';
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+      menuToggle.textContent = '☰';
+      menuToggle.setAttribute('aria-expanded','false');
+    }));
+  </script>
+</body>
+</html>
